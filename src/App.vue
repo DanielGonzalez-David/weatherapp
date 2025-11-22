@@ -42,21 +42,29 @@ const api = {
 
 const query = ref('')
 const weather = ref({})
-function ChangeWeatherTheme(weathercondition) {
-  if (weathercondition === 'Clear') {
-    backgroundcolor = document.body.style.background = "linear-gradient(to right, #2980b9, #6dd5fa, #ffffff)";
-  } else if (weathercondition === 'Clouds') {
-    document.body.style.background = "linear-gradient(to right, #d7d2cc, #304352)";
-  } else if (weathercondition === 'Rain') {
-    document.body.style.background = "linear-gradient(to right, #4e54c8, #8f94fb)";
-  } else if (weathercondition === 'Snow') {
-    document.body.style.background = "linear-gradient(to right, #83a4d4, #b6fbff)";
-  } else {whatercondition === 'stormy'
-    document.body.style.background = "linear-gradient(to right, #83a4d4, #b6fbff)";
-  }
-  
-}
 
+function ChangeWeatherTheme(weathercondition) {
+
+  if (weathercondition === 'Clear') {
+    document.body.style.background = "linear-gradient(to right,  #d0ff00, #ffe600, #ffffff)"
+  } 
+  else if (weathercondition === 'Clouds') {
+    document.body.style.background = "linear-gradient(to right, #61b2f5, #5a5a57)"
+  } 
+  else if (weathercondition === 'Rain') {
+    document.body.style.background = "linear-gradient(to right,  #61b2f5, #348cff)"
+  } 
+  else if (weathercondition === 'Snow') {
+    document.body.style.background = "linear-gradient(to right, #7dabca, ##b6fbff)"
+  } 
+  else if (weathercondition === 'Thunderstorm') {
+    document.body.style.background = "linear-gradient(to right,  #c5e5ff, #163b6b)"
+  }
+  else {
+    document.body.style.background = "linear-gradient(to right, #83a4d4, #b6fbff)"
+  }
+
+}
 
 function fetchWeather(e) {
   if (e.key === 'Enter') {
@@ -65,11 +73,12 @@ function fetchWeather(e) {
       .then(result => {
         weather.value = result
         query.value = ''
+        ChangeWeatherTheme(result.weather[0].main)
+
         console.log(result)
       })
   }
 }
-
 
 function dateBuilder(d) {
   const months = [
@@ -93,8 +102,8 @@ function dateBuilder(d) {
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, #83a4d4, #b6fbff);
-  color: #333;
+  background: linear-gradient(to right,#83a4d4, #b6fbff);
+  color: #295572;
   text-align: center;
 }
 
